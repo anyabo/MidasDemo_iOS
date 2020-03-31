@@ -1,0 +1,6 @@
+framework module MidasFramework {
+  umbrella header "MidasFramework.h"
+
+  export *
+  module * { export * }
+}
