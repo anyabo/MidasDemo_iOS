@@ -53,6 +53,6 @@ typedef NS_ENUM(NSInteger, MidasADReqState){
 
 @class MidasAdBaseObject;
 @class MidasAdRes;
-typedef void(^MidasAdShowBlock)(MidasAdRes *ad, NSError *error);//展示回调
+typedef void(^MidasAdShowBlock)(MidasAdRes *res, NSError *error);//展示回调
 typedef void(^MidasAdRequestBlock)(MidasAdBaseObject *adObj, MidasADReqState adState, NSError *error);//请求回调
 #endif /* MidasAdHeader_h */

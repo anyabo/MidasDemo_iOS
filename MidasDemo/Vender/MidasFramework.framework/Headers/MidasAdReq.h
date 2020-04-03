@@ -12,12 +12,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * 广告请求体，抽象层，请求广告需要实例化对应类型的子类对象
+ * 广告请求体
  */
 @interface MidasAdReq : NSObject
 
 /**
- * 广告位置ID
+ * 广告位Id
  */
 @property (nonatomic, copy) NSString *positionId;
 
@@ -40,6 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
  * 原生信息流、自渲染可设置广告数量，默认1
  */
 @property (nonatomic, assign) NSInteger count;
+
+/**
+ * 广告拉取超时时间
+ */
+@property (nonatomic, assign) NSInteger timeOut;
 
 /**
  * 弹出广告详情的控制器，默认keyWindow的rootvc

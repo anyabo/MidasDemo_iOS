@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MidasAdSDKManager : NSObject
 
 /**
- * APP的唯一标识
+ APP的唯一标识
  */
 + (NSString *)appId;
 
 /**
- * 获取SDK版本
+ 获取SDK版本
  */
 + (NSString *)sdkVersion;
 
@@ -41,11 +41,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)loadMidasAdWithReq:(MidasAdReq *)req completion:(MidasAdShowBlock)completion;
 
 /**
- * 当前广告位视频是否缓存好
- */
-+ (BOOL)adIsReadyWithPosition:(NSString *)position;
+ 根据adReq去判断有没有可用广告，如果有直接回调，如果没有，发起新的请求
+ @param req 请求体
+ @param block 结果回调
+*/
++ (void)checkAdStateWithReq:(MidasAdReq *)req block:(void(^)(BOOL isReady, NSString *errStr))block;
 
-//日志
+/**
+ 是否支持日志, 若设置YES,则在window层会添加一个悬浮的日志view
+ @param enable 默认NO
+*/
 + (void)logFloatEnable:(BOOL)enable;
 
 @end

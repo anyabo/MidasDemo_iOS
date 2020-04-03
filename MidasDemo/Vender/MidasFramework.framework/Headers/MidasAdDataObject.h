@@ -21,22 +21,22 @@ typedef NS_ENUM(NSInteger, MidasCreativeType){
 @interface MidasAdDataObject : NSObject
 
 /**
- 广告标题
+ * 广告标题
  */
 @property (nonatomic, copy) NSString *title;
 
 /**
- 广告描述
+ * 广告描述
  */
 @property (nonatomic, copy) NSString *desc;
 
 /**
- 广告图片Url
+ * 广告图片Url
  */
 @property (nonatomic, copy) NSString *imageUrl;
 
 /**
- 广告icon 图标
+ * 广告icon 图标
  */
 @property (nonatomic, copy) NSString *iconUrl;
 
@@ -45,7 +45,9 @@ typedef NS_ENUM(NSInteger, MidasCreativeType){
  */
 @property (nonatomic, assign) CGSize iconSize;
 
-//广告icon
+/**
+ * 广告icon
+ */
 @property (nonatomic, strong) UIImage *iconImage;
 
 /**

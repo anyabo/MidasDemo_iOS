@@ -127,21 +127,23 @@ static NSString *MidasAdDetailTableViewCell = @"MidasAdDetailTableViewCell";
     adReq.count = 1;
     
     __weak typeof(self) wSelf = self;
-    BOOL isVaild = YES;
-    [MBProgressHUD hideHUD];
-    if(![MidasAdSDKManager adIsReadyWithPosition:adReq.positionId]){
-        isVaild = NO;
-        [MBProgressHUD showTipMessageInWindow:@"视频广告未加载完"];
-    }
-    if(isVaild){
-        [MidasAdSDKManager loadMidasAdWithReq:adReq completion:^(MidasAdRes *adRes, NSError *error) {
-            if(error){
-                //输出错误
-            }else{
-                [wSelf handleNativeAds:adRes];
+    [MBProgressHUD showActivityMessageInView:@"请稍等"];
+    [MidasAdSDKManager checkAdStateWithReq:adReq block:^(BOOL isReady, NSString * _Nonnull errStr) {
+        [MBProgressHUD hideHUD];
+        if(isReady){
+            if(!adReq.needCache){
+                [MidasAdSDKManager loadMidasAdWithReq:adReq completion:^(MidasAdRes *adRes, NSError *error) {
+                    if(error){
+                        
+                    }else{
+                        [wSelf handleNativeAds:adRes];
+                    }
+                }];
             }
-        }];
-    }
+        }else{
+            [MBProgressHUD showErrorMessage:errStr];
+        }
+    }];
 }
 
 #pragma mark - 处理广告
